@@ -1,0 +1,106 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}
+	Posts Detail
+{% endblock title %}
+{% block content %}
+
+
+            <div class="post-content post-classic post-content-single col-md-9">
+
+                <div class="post-item">
+                    <div class="post-image">
+                        <a href="#">
+
+                            <img alt="" src="{% static 'images/blog/post1.jpg' %}">
+                        </a>
+                    </div>
+                    <div class="post-content-details">
+                        <div class="post-title">
+                            <h2>{{posts.title}}</h2>
+                        </div>
+                        <div class="post-info">
+                            <span class="post-autor">Post by: <a href="#">{% include "partial/authors.html" with users=posts.author.all only %}</a></span>
+                        </div>
+                        <div class="post-description">
+                            <p>{{ posts.content }}</p>
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="post-date">
+                            <span class="post-date-day">{{ posts.created_at|date:"d" }}</span>
+                            <span class="post-date-month">{{ posts.created_at|date:"F" }}</span>
+                            <span class="post-date-year">{{ posts.created_at|date:"Y" }}</span>
+                        </div>
+
+                        <div class="post-comments">
+									<a href="#">
+										<i class="fa fa-comments-o"></i>
+										<span class="post-comments-number">{{ posts.posts.count }}</span>
+									</a>
+								</div>
+                        <div class="post-comments">
+                                <i class="fa fa-share-alt"></i>
+                                <span class="post-comments-number">Tags:{% for tags in added_tags %}
+                                                # {{tags.name}}
+                                            {% endfor %}</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="comments" class="comments">
+                    <div class="heading">
+                        <h4 class="comments-title">Comments <small class="number">{{ posts.posts.count }}</small></h4>
+                    </div>
+
+                    {% for comentari in added_comments %}
+                    <div class="comment">
+                        <a href="" class="pull-left">
+                            <img alt="" src="{% static 'images/commentspic.jpg' %}" class="avatar">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{comentari.email}}</h4>
+                            <p class="time">{{comentari.created}}</p>
+                            <p>{{comentari.content}}</p>
+                            <a href="#" class="comment-reply pull-right"><i class="fa fa-reply"></i> Reply</a>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="comment-form">
+                    <div class="heading">
+                        <h4>Leave a comment</h4>
+                    </div>
+                    <form class="form-gray-fields" method="POST" action="">>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="email" class="upper">Your Email</label>
+                                    <input type="email" aria-required="true" id="email" placeholder="Enter email" name="senderEmail" class="form-control required email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="comment" class="upper">Your comment</label>
+                                    <textarea aria-required="true" id="comment" placeholder="Enter comment" rows="9" name="comment" class="form-control required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp;Post comment</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}
+	Log in page.
+{% endblock title %}
+{% block content %}
+<div class="post-content post-thumbnail col-md-9">
+  <p> User : {{ request.user }}</p>
+  <form action="" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+
+    <input type="submit" value="Login" />
+  </form>
+</div>
+{% endblock content %}

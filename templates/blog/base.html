@@ -1,0 +1,191 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+
+
+	<!-- Bootstrap Core CSS -->
+	<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/fontawesome/css/font-awesome.min.css' %}" type="text/css" rel="stylesheet">
+	<link href="{% static 'vendor/animateit/animate.min.css' %}" rel="stylesheet">
+
+	<!-- Vendor css -->
+	<link href="{% static 'vendor/owlcarousel/owl.carousel.css' %}" rel="stylesheet">
+	<link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+	<!-- Template base -->
+	<link href="{% static 'css/theme-base.css' %}" rel="stylesheet">
+
+	<!-- Template elements -->
+	<link href="{% static 'css/theme-elements.css' %}" rel="stylesheet">
+
+<!-- Responsive classes -->
+	<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+
+	<!-- Template color -->
+	<link href="{% static 'css/color-variations/blue.css' %}" rel="stylesheet" type="text/css" media="screen" title="blue">
+
+	<!-- LOAD GOOGLE FONTS -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,700,600%7CRaleway:100,300,600,700,800" rel="stylesheet" type="text/css" />
+
+	<!-- BLOG FONT & STYLE -->
+	<link href="http://fonts.googleapis.com/css?family=Damion" rel="stylesheet" type="text/css">
+	<link href="{% static 'css/scss/style-blog.css' %}" media="screen" rel="stylesheet" type="text/css" />
+
+	<!-- CSS CUSTOM STYLE -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}" media="screen" />
+    <!--VENDOR SCRIPT-->
+    <script src="{% static 'vendor/jquery/jquery-1.11.2.min.js' %}"></script>
+    <script src="{% static 'vendor/plugins-compressed.js' %}"></script>
+  <title>
+    {% block title %}
+    {% endblock title %}
+  </title>
+
+
+</head>
+<body>
+	<div class="loader-wrapper">
+		<div class="loader"> <img width="40" src="{% static 'images/svg-loaders/puff.svg' %}" alt=""> <span class="loader-title">Page is loading, just a sec...</span> </div>
+	</div>
+	<!--WRAPPER-->
+	<div class="wrapper">
+		<!--HEADER-->
+		<header id="header" class="header-mini header-dark">
+			<div id="header-wrap">
+				<div class="container">
+
+					<!--LOGO-->
+					<div id="logo">
+						<a href="/" class="logo" data-dark-logo="{% static 'images/logo-dark.png' %}"> <img src="{% static 'images/logo.png' %}" alt="Polo Logo"> </a>
+					</div>
+					<!--END: LOGO-->
+
+					<!--MOBILE MENU -->
+					<div class="nav-main-menu-responsive">
+						<button class="lines-button x">
+							<span class="lines"></span>
+						</button>
+					</div>
+					<!--END: MOBILE MENU -->
+
+					<!--TOP SEARCH -->
+					<div id="top-search"> <a id="top-search-trigger"><i class="fa fa-search"></i><i class="fa fa-close"></i></a>
+						<form action="search-results-page.html" method="get">
+							<input type="text" name="q" class="form-control" value="" placeholder="Start typing & press  &quot;Enter&quot;">
+						</form>
+					</div>
+					<!--END: TOP SEARCH -->
+
+					<!--NAVIGATION-->
+					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
+						<div class="container">
+							<nav class="main-menu mega-menu" id="mainMenu">
+								<ul class="main-menu nav nav-pills">
+									<li><a href="/"><i class="fa fa-home"></i></a> </li>
+									{% if request.user.is_authenticated %}
+										<li> <a href="/users/logout/">LogOut</a> </li>
+									{% else %}
+										<li> <a href="/users/">Login</a> </li>
+									{% endif %}
+
+									<li> <a href="/create/">Create Post</a> </li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<!--END: NAVIGATION-->
+				</div>
+			</div>
+		</header>
+		<!--END: HEADER-->
+			<!-- CONTENT -->
+		<section class="p-t-40">
+			<div class="container">
+				<div class="row">
+{% block content %}
+{% endblock content %}
+					<!-- Sidebar-->
+					<div class="sidebar col-md-3">
+
+
+						<!--widget categories-->
+						<div class="widget clearfix widget-categories">
+							<h4 class="widget-title">Our Services</h4>
+							<ul class="list list-arrow-icons">
+								<li> <a title="" href="#">Development </a> </li>
+								<li> <a title="" href="#">Branding </a> </li>
+								<li> <a title="" href="#">Marketing </a> </li>
+								<li> <a title="" href="#">Branding </a> </li>
+								<li> <a title="" href="#">Strategy solutions</a> </li>
+								<li> <a title="" href="#">Copywriting </a> </li>
+							</ul>
+						</div>
+						<!--end: widget categories-->
+
+						<!--widget contact us-->
+						<div class="widget clearfix widget-contact-us" style="background-image: url('{% static "images/world-map.png" %}'); background-position: 50% 55px; background-repeat: no-repeat">
+							<h4 class="widget-title">Contact us</h4>
+							<ul class="list-large list-icons">
+								<li><i class="fa fa-map-marker"></i>
+									<strong>Address:</strong>Tsar Simeon 43
+									<br>Sofia</li>
+								<li><i class="fa fa-phone"></i><strong>Phone:</strong> +359 02/4131517</li>
+								<li><i class="fa fa-envelope"></i><strong>Email:</strong> <a href="mailto:first.last@example.com">team@hackbulgaria.com</a>
+								</li>
+								<li><i class="fa fa-clock-o"></i>Monday - Friday: <strong>08:00 - 22:00</strong>
+									<br>Saturday, Sunday: <strong>Closed</strong>
+								</li>
+							</ul>
+						</div>
+						<!--end: widget contact us-->
+
+						<!--widget blockquote -->
+						<div class="widget clearfix widget-blockquote">
+							<h4 class="widget-title">Blockquote widget</h4>
+							<blockquote class="blockquote-simple">
+								<p>Art is the only serious thing in the world. And the artist is the only person who is never serious.</p>
+								<small>by <cite>Oscar Wilde</cite></small>
+							</blockquote>
+						</div>
+						<!--end: widget blockquote -->
+
+					</div>
+					<!-- END: Sidebar-->
+				</div>
+			</div>
+		</section>
+		<!-- END: SECTION -->
+	</div>
+	<!-- END: WRAPPER -->
+	<!-- FOOTER -->
+<footer class="background-dark text-grey" id="footer">
+	<div class="copyright-content">
+		<div class="container">
+			<div class="row">
+				<div class="copyright-text text-center"> &copy; Мъчиме се в Хак България :). <a target="_blank" href="https://hackbulgaria.com/">The real Site</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- END: FOOTER -->
+ {% block footer %}
+ {% endblock footer %}
+</footer>
+<!-- GO TOP BUTTON -->
+	<a class="gototop gototop-button" href="#"><i class="fa fa-chevron-up"></i></a>
+
+	<!-- Theme Base, Components and Settings -->
+	<script src="{% static 'js/theme-functions.js' %}"></script>
+
+	<!-- Custom js file -->
+	<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
