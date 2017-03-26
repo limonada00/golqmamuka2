@@ -60,19 +60,18 @@ def blog_detail(request, id):
 def blog_detailform(request, id):
     if request.method == 'POST':
         email = request.POST.get('senderEmail')
-
         content = request.POST.get('comment')
-
-        commentsid = create_comment(email,content,id)
-        added_comments = Comment.objects.filter(blogpost=id)
-        return render(request, 'blog/blog_post.html', locals())
+        commentsid = create_comment(email, content, id)
+        posts = BlogPost.objects.all()
+        comments = Comment.objects.all()
+        #added_comments = Comment.objects.filter(blogpost=id)
+        return render(request, 'blog/index.html', locals())
         #url = reverse('index-page')
         #return redirect(url)
-
-    try:
-        posts = BlogPost.objects.get(id=id)
-    except posts.DoesNotExist:
-        raise Http404("No MyModel matches the given query.")
+   # try:
+    posts = BlogPost.objects.get(id=id)
+    #except posts.DoesNotExist:
+       # raise Http404("No MyModel matches the given query.")
     added_tags = Tag.objects.filter(posts=id)
     tags = Tag.objects.all()
     added_comments = Comment.objects.filter(blogpost=id)

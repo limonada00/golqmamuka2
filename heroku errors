@@ -1,0 +1,40 @@
+(week5) nikolai@lapatopa:~/djangothings/week5/website$ git push heroku master
+Counting objects: 564, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (549/549), done.
+Writing objects: 100% (564/564), 25.02 MiB | 586.00 KiB/s, done.
+Total 564 (delta 65), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Python app detected
+remote: -----> Installing python-2.7.13
+remote: -----> Installing pip
+remote: -----> Installing requirements with pip
+remote:        Collecting dj-database-url==0.4.2 (from -r /tmp/build_a734d22ddcfab3010beeb7f10bbcb400/requirements.txt (line 2))
+remote:          Downloading dj_database_url-0.4.2-py2.py3-none-any.whl
+remote:        Collecting Django==1.10.6 (from -r /tmp/build_a734d22ddcfab3010beeb7f10bbcb400/requirements.txt (line 3))
+remote:          Downloading Django-1.10.6-py2.py3-none-any.whl (6.8MB)
+remote:        Collecting gunicorn==19.7.1 (from -r /tmp/build_a734d22ddcfab3010beeb7f10bbcb400/requirements.txt (line 4))
+remote:          Downloading gunicorn-19.7.1-py2.py3-none-any.whl (111kB)
+remote:        Collecting whitenoise==3.3.0 (from -r /tmp/build_a734d22ddcfab3010beeb7f10bbcb400/requirements.txt (line 8))
+remote:          Downloading whitenoise-3.3.0-py2.py3-none-any.whl
+remote:        Installing collected packages: dj-database-url, Django, gunicorn, whitenoise
+remote:        Successfully installed Django-1.10.6 dj-database-url-0.4.2 gunicorn-19.7.1 whitenoise-3.3.0
+remote: 
+remote:      $ python manage.py collectstatic --noinput
+remote:        629 static files copied to '/tmp/build_a734d22ddcfab3010beeb7f10bbcb400/staticfiles', 629 post-processed.
+remote: 
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 121.8M
+remote: -----> Launching...
+remote:        Released v4
+remote:        https://golqmamuka.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/golqmamuka.git
+ * [new branch]      master -> master
+ 
